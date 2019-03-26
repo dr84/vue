@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Page Title</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p>{{msg}}</p>
+        <button id="run" @click="run">run</button>
+        <button id="stop" @click="stop">stop</button>
+    </div>
+
+    <script>
+        //创建vue实例
+        var v = new Vue({
+            //选择要挂载vue的地方
+            el: "#app",
+            //数据存储在data
+            data: {
+                msg: "点击run动起来吧！",
+                interval: null
+            },
+            //定义方法函数
+            methods: {
+                run() {
+                    //只有定时器不存在的时候才开启新的定时器，防止点run重复定时器
+                    if (this.interval != null) return;
+                    this.interval = setInterval(() => {
+                        //截取下标1到最后的字符串
+                        var str1 = this.msg.substr(1);
+                        //截取下标为0的字符串
+                        var str2 = this.msg.substr(0, 1);
+                        //尾首相连拼接成新的字符串
+                        this.msg = str1 + str2;
+                    }, 100)
+                },
+                stop() {
+                    //终止定时器
+                    clearInterval(this.interval);
+                    //即便是终止定时器，定时器的值还在所以要将定时器重新赋值为null，以便符合下次开启新定时器的判断
+                    this.interval = null;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
