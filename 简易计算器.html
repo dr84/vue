@@ -5,24 +5,26 @@
     <meta charset="UTF-8">
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
 </head>
-<div id="app">
-    {{n3}}
-    <hr>
-    <br>
-    <input type="text" v-model="n1">
-    <select type="text" v-model="opt">
-        <option value="+">+</option>
-        <option value="-">-</option>
-        <option value="*">*</option>
-        <option value="/">/</option>
-    </select>
-    <input type="text" v-model="n2">
-    <br>
-    <br>
-    <button @click="calcu">计算</button>
-</div>
 
 <body>
+    <div id="app">
+        {{n3}}
+        <hr>
+        <br>
+        <input type="text" v-model="n1">
+        <select type="text" v-model="opt">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+        </select>
+        <input type="text" v-model="n2">
+        <br>
+        <br>
+        <button @click="calcu">计算</button>
+    </div>
+
+
     <script>
         var vue = new Vue({
             el: '#app',
