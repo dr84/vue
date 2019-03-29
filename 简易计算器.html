@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<div id="app">
+    {{n3}}
+    <hr>
+    <br>
+    <input type="text" v-model="n1">
+    <select type="text" v-model="opt">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+    </select>
+    <input type="text" v-model="n2">
+    <br>
+    <br>
+    <button @click="calcu">计算</button>
+</div>
+
+<body>
+    <script>
+        var vue = new Vue({
+            el: '#app',
+            data: {
+                n1: "",
+                opt: "+",
+                n2: "",
+                n3: "这里显示结果"
+            },
+            methods: {
+                calcu() {
+                    switch (this.opt) {
+                        case ("+"):
+                            this.n3 = parseInt(this.n1) + parseInt(this.n2);
+                            break;
+                        case ("-"):
+                            this.n3 = parseInt(this.n1) - parseInt(this.n2);
+                            break;
+                        case ("*"):
+                            this.n3 = parseInt(this.n1) * parseInt(this.n2);
+                            break;
+                        case ("/"):
+                            this.n3 = parseInt(this.n1) / parseInt(this.n2);
+                            break;
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
