@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model="iptvalue"> <button @click="add">添加</button>
+        <ul>
+            <lifor @del="del" v-for="(item,index) in todoarr" :nitem="item" :i="index" :key="index"></lifor>
+        </ul>
+    </div>
+
+    <script>
+        //点击添加,把输入框内容添加到列表,点列表项删除相应的列表项
+        Vue.component("lifor", {
+
+            template: `<li @click="$emit('del',i)">{{nitem}}</li>`,
+            props: ['nitem', 'i']
+        });
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                iptvalue: "",
+                todoarr: ['123', '234']
+            },
+            methods: {
+                //添加函数
+                add() {
+                    this.todoarr.push(this.iptvalue);
+                    this.iptvalue = "";
+                },
+                //第一种删除函数:(filter 过滤器index !== i:)-------把点击的数组项下标 index,跟过滤器循环的下标 i对比,如果该数组项的index(固定不变)和循环的下标i(0.1.2.3...)不匹配的时候,就把这个 index!=i 的不匹配项返回到该数组里面,而 index=i 的那一项不会被返回,所以变相删除了点击的那一项
+                del(index) {
+                    let arr = this.todoarr.filter((item, i) => {
+
+                        return index !== i;
+                    });
+                    this.todoarr = arr;
+                }
+            },
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+
+
+<body>
+    <div id="abc">
+        <h1 v-if="seen">{{message}}</h1>
+        <div>
+            <ol>
+                <li v-for="i in games">{{i.title}}/${{i.price}}</li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: '#abc',
+            data: {
+                seen: true,
+                message: "new games in 2019",
+                games: [{
+                        "title": "mario",
+                        "price": 100
+                    },
+                    {
+                        "title": "mario2",
+                        "price": 200
+                    },
+                    {
+                        "title": "mario3",
+                        "price": 300
+                    }
+                ]
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+
+
+<body>
+    <div id="abc">
+        <p>faverate game:--{{mygame}} </p>
+        <input type="text" v-model="mygame">
+    </div>
+
+    <script>
+        var vue=new Vue({
+            el:"#abc",
+            data:{
+                "mygame":"mario"
+            }
+        })
+    </script>
+</body>
+
+</html>

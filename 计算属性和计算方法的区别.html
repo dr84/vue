@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        输入大于10的数字: <input v-model="message" type="number">
+        <p>输入的是{{message}}</p>
+        <p>计算翻转后是:{{str1}}</p>
+        <p>方法翻转后是:{{str2()}}</p>
+    </div>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                message: ""      
+            },
+            computed: {
+                str1() {
+                    return(this.message.split('').reverse().join(''))                    
+                }
+            },
+            methods:{
+                str2() {
+                    return(this.message.split('').reverse().join(''))                    
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

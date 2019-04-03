@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app" :style="styles">
+        <weather-title :ntitle="title"></weather-title>
+        <list-for :nweather="weather"></list-for>
+    </div>
+
+    <script>
+        //循环列表组件
+        Vue.component("list-for", {
+            template: `
+                <ul>
+                    <li  v-for="item in nweather" :style="styles">{{item.data}}</li>
+                </ul>
+                `,
+            computed: {
+                styles() {
+                    return {
+                        width: "100%",
+                        height: "25px",
+                    }
+                }
+            },
+            //[]内的变量能取到父组件的某个变量的值
+            props: ["nweather"]
+        });
+        //标题组件
+        Vue.component("weather-title", {
+            template: `
+                <div :style="styles">{{ntitle}}</div>
+            `,
+            computed: {
+                styles() {
+                    return {
+                        width: "100%",
+                        height: "50px",
+                        backgroundColor: "green",
+                        textAlign: "center",
+                        lineHeight: "50px",
+                        fontSize: "30px",
+                        color: "orange",
+                        borderRadius: "10px 10px 0px 0px"
+                    }
+                }
+            },
+            //[]内的变量能取到父组件的某个变量的值
+            props: ["ntitle"]
+        });
+
+        //vue实例
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                title: "天气预报",
+                weather: [{
+                        "data": "12号阵雨"
+                    },
+                    {
+                        "data": "13号小雨"
+                    },
+                    {
+                        "data": "14号冰雹"
+                    },
+                    {
+                        "data": "15号晴天"
+                    },
+                    {
+                        "data": "16号大风"
+                    }
+                ]
+            },
+            computed: {
+                styles() {
+                    return {
+                        margin: "20px auto",
+                        width: "300px",
+                        height: "200px",
+                        backgroundColor: "#ccc",
+                        boxShadow: "2px 2px 50px skyblue",
+                        borderRadius: "10px"
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

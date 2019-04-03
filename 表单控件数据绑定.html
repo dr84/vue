@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>多选框</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+
+
+<body>
+    <!-- 多选框绑定 -->
+    <div id="app">
+        <h1>1--请选择自己喜欢的游戏</h1>
+        <input type="checkbox" id="game1" value="英雄联盟" v-model="checked">
+        <label for="game1">英雄联盟</label>
+        <input type="checkbox" id="game2" value="梦幻西游" v-model="checked">
+        <label for="game2">梦幻西游</label>
+        <input type="checkbox" id="game3" value="泡泡堂" v-model="checked">
+        <label for="game3">泡泡堂</label>
+        <input type="checkbox" id="game4" value="劲舞团" v-model="checked">
+        <label for="game4">劲舞团</label>
+        <h3>您选择的游戏是:<br>{{checked}}</h3>
+    </div>
+    <!-- 单选框绑定 -->
+    <div id="app2">
+        <h1>2--请选择您的年龄:</h1>
+        <input type="radio" id="age1" value="18岁以下" v-model="checked">
+        <label for="age1">18岁以下</label>
+        <input type="radio" id="age2" value="18-25" v-model="checked">
+        <label for="age2">18-25</label>
+        <input type="radio" id="age3" value="25-35" v-model="checked">
+        <label for="age3">25-35</label>
+        <input type="radio" id="age4" value="35以上" v-model="checked">
+        <label for="age4">35以上</label>
+        <h3>您的年龄是:<br>{{checked}}</h3>
+    </div>
+    <!-- 下拉框绑定 -->
+    <div id="app3">
+        <h1>2--请选择您的所在地:</h1>
+        <select v-model="checked">
+            <option>--北京--</option>
+            <option>--上海--</option>
+            <option>--广州--</option>
+            <option>--深圳--</option>
+            <option checked="checked">其他</option>
+        </select>
+        <h3>您的所在地是:<br>{{checked}}</h3>
+    </div>
+
+    <hr>
+
+    <div id="app4">
+        输入四位出生年:<input type="number" v-model.lazy="year" @change="checkyear">
+        <br>
+        <p v-if="showerr">请输入1900-2019间的数字!</p>
+        <p v-if="show">格式正确</p>
+    </div>
+    <script>
+        //多选框绑定 
+        var app = new Vue({
+            el: '#app',
+            data: {
+                checked: []
+            }
+        })
+        //单选框绑定 
+        var app2 = new Vue({
+            el: '#app2',
+            data: {
+                checked: []
+            }
+        })
+        //下拉框绑定
+        var app3 = new Vue({
+            el: '#app3',
+            data: {
+                checked: []
+            }
+        })
+        //下拉框绑定
+        var app4 = new Vue({
+            el: '#app4',
+            data: {
+                year: "",
+                name: "",
+                txt: "",
+                show: false,
+                showerr: false
+            },
+            methods: {
+                checkyear: function () {
+                    var num = parseInt(this.year)
+                    if (1900 < num && num < 2019) {
+                        this.showerr = false,
+                            this.show = true
+                    } else {
+                        this.showerr = true,
+                            this.show = false
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+
+</html>

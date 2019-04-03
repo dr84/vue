@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+
+
+<body>
+    <div id="abc">
+        <p>你最喜欢的游戏是:{{mygame}}</p>
+        <button v-on:click="btnclick('我的世界')">我的世界</button>
+        <button v-on:click="btnclick('战魂')">战魂</button>
+        <button v-on:click="btnclick('魔兽')">魔兽</button>
+        <div>
+
+        </div>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: '#abc',
+            data: {
+                mygame:"mario"             
+            },
+            methods:{
+                btnclick:function(abc){
+                    this.mygame=abc;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

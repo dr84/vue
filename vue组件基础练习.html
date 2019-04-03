@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue组件基础练习</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+
+
+<body>
+    <div id="app">
+        <vue-header></vue-header>
+        <vue-main></vue-main>
+        <vue-footer></vue-footer>
+    </div>
+    <script>
+        Vue.component("vue-header", {
+            template: '<div v-bind:style="styles">头部区域</div>',
+            computed: {
+                styles() {
+                    return {
+                        width: "100%",
+                        height: "100px",
+                        background: "#ccc",
+                        marginBottom: "20px"
+                    }
+                }
+            }
+        });
+        Vue.component("vue-main", {
+            template: '<div v-bind:style="styles"> ' +
+                '<v-left></v-left>' +
+                '<v-right></v-right>' +
+                '</div>',
+            computed: {
+                styles() {
+                    return {
+                        width: "100%",
+                        height: "500px",
+                        background: "orange",
+                        marginBottom: "20px"
+                    }
+                }
+            }
+        });
+        Vue.component("v-left", {
+            template: '<div v-bind:style="styles">左部分</div>',
+            computed: {
+                styles() {
+                    return {
+                        width: "35%",
+                        height: "500px",
+                        background: "blue",
+                        float: "left",
+                    }
+                }
+            }
+        });
+        Vue.component("v-right", {
+            template: '<div v-bind:style="styles">右部分</div>',
+            computed: {
+                styles() {
+                    return {
+                        width: "65%",
+                        height: "500px",
+                        background: "pink",
+                        float: "right",
+                    }
+                }
+            }
+        });
+        Vue.component("vue-footer", {
+            template: '<div v-bind:style="styles">底部区域</div>',
+            computed: {
+                styles() {
+                    return {
+                        width: "100%",
+                        height: "100px",
+                        background: "black"
+                    }
+                }
+            }
+        })
+        var app = new Vue({
+            el: "#app",
+
+        })
+    </script>
+</body>
+
+</html>
