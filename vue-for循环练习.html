@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="box">
+        {{msg}}：
+        <p v-for="(value,key) in str">{{value}},key是{{key}}</p>
+        <hr>
+        {{msg2}}：
+        <p v-for="(value2,key) in str2">{{value2}},key是{{key}}</p>
+        <hr>
+        {{msg3}}：
+        <p v-for="(value3,key,index) in str3">{{key}} : {{value3}} , index : {{index}}</p>
+        <hr>
+        {{msg4}}：
+        <p v-for="(value4,key) in 5"> {{value4}},key是{{key}} </p>
+    </div>
+
+
+    <script>
+        var vue = new Vue({
+            el: "#box",
+            data: {
+                msg: "--- 循环普通数组",
+                msg2: "--- 循环对象数组",
+                msg3: "--- 循环对象",
+                msg4: "--- 迭代数字",
+                str: [1, 2, 3, 4, 5],
+                str2: {
+                    user: {
+                        name: "Alice",
+                        gender: "female",
+                        age: 18
+                    }
+                },
+                str3: {
+                    name: "Alice",
+                    gender: "female",
+                    age: 18
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
