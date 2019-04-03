@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>vue绑定class的几种方法</title>
+    <style>
+        body {
+            height: auto;
+            width: 300px;
+            margin: 0 auto;
+            font-size: 15px;
+            border: 5px solid greenyellow;
+        }
+
+        .red {
+            color: red;
+            background: lightgreen;
+            box-shadow: 0px 0px 20px black;
+            border-radius: 10px;
+        }
+
+        .orange {
+            background: orange
+        }
+    </style>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="vue">
+        <!-- 类名数组: ["green"] -->
+        <div :class="['red','orange']">{{msg}}
+        </div>
+
+        <!-- 对象或对象名 "{-}" 或"objname" -->
+        <div :class="{'color':'blue','background':'yellow'}">{{msg}}
+        </div>
+
+        <hr>
+
+        <!-- 对象或对象名: "-}" 或 "objname" -->
+        <div :style="green">{{msg2}}
+        </div>
+
+        <!-- 对象名数组 -->
+        <div :style="[pink]">{{msg2}}
+        </div>
+    </div>
+    <script>
+        vue = new Vue({
+            el: "#vue",
+            data: {
+                msg: `绑定class样式的几种方法练习，1-以数组的形式:类名放在数组里(注意数组和类名都需要写成字符串的形式，如:"['red']"，这里的数组项必须加引号！！！，数组里也可以放对象和三元表达式flag?'red':''。2-直接使用对象的形式:即'类名':true放在对象内，如"{'red':true}"`,
+                msg2: `
+                绑定内联样式style，style跟绑定class是一样的，可以是对象，对象名称，也可以是数组项，但是这里的数组不能加引号！！！。
+                `,
+                flag: true,
+                green: {
+                    "color": "green",
+                    "background": "purple"
+                },
+                pink: {
+                    "color": "pink"
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

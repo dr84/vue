@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+        .app {
+            width: 300px;
+            height: 350px;
+            text-align: center;
+            margin: 0 auto;
+            border: 5px solid red;
+        }
+
+        .box {
+            text-align: center;
+            width: 300px;
+            background: rgba(14, 33, 5, 0.632);
+            color: rgba(122, 247, 4, 0.975);
+        }
+
+        p {
+            margin: 0px;
+        }
+    </style>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div class="app">
+        <div class="box">
+            <p v-html="text"></p>
+        </div>
+        <hr>
+        <div class="box">
+            <p v-html="text2"></p>
+        </div>
+
+
+        <button type="button" @click="toggle">点击切换</button>
+        <p v-if="flag">v-if: {{msg}}</p>
+        <p v-show="flag">v-show: {{msg}}</p>
+    </div>
+    <a style="float:right" href="https://blog.csdn.net/u014054437/article/details/79978418">参考链接</a>
+
+
+    <script>
+        var app = new Vue({
+            el: '.app',
+            data: {
+                text: "v-if='false'时,会将对应的标签元素直接注释掉,该 DOM 不存在,所以不可能显示.当需要频繁切换元素显示状态 v-if 会不断创建和删除该 DOM,造成较高的性能 消耗,此时用 v-show 合适",
+                text2: "v-show='false'时,会为对应的标签元素加上display='none'的样式,该 DOM 实际上还存在,只是没有显示,但是无论显示与否,该元素都会被创建出来,比如一个管理员删除按钮,不能让普通用户看见,用 v-show 显然是此地无银三百两只是将删除按钮隐藏了而已,只要在控制台将 display 设置为 block 就有了删除权限,这样显然是不明智的,此时必须用 v-if",
+                msg: 'hello vue',
+                flag: true
+            },
+            methods: {
+                //点击后将 flag 取反
+                toggle() {
+                    this.flag = !this.flag
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
