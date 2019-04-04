@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Page Title</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div id="app">
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">添加品牌</h3>
+            </div>
+            <div class="panel-body form-inline">
+                <label>
+                    id :
+                    <input type="text" class="form-control" v-model="id">
+                </label>
+                <label>
+                    name :
+                    <input type="text" class="form-control" v-model="name">
+                </label>
+                <label>
+                    操作 :
+                    <input type="button" value="添加" class="btn btn-info" @click="add">
+                </label>
+            </div>
+        </div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>name</th>
+                    <th>ctime</th>
+                    <th>operation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="item in list" :key="item.id">
+                    <td>{{item.id}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.ctime}}</td>
+                    <td><a href="#" class="btn btn-danger">删除</button></a>
+                </tr>
+            </tbody>
+        </table>
+
+
+    </div>
+
+    <script>
+        var v = new Vue({
+            el: "#app",
+            data: {
+                //初始化 id 和 name 的输入框为空
+                id: '',
+                name: '',
+                list: [{
+                        id: 1,
+                        name: "奔驰",
+                        ctime: new Date()
+                    },
+                    {
+                        id: 2,
+                        name: "宝马",
+                        ctime: new Date()
+                    },
+                    {
+                        id: 3,
+                        name: "别克",
+                        ctime: new Date()
+                    }
+                ]
+            },
+            methods: {
+                add() {
+                    //向 list 数组 push 一个新的对象
+                    this.list.push({
+                        id: this.id,
+                        ctime: new Date,
+                        name: this.name
+                    });
+                    //清空输入的内容
+                    this.id = this.name = '';
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
